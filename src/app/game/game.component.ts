@@ -35,13 +35,12 @@ export class GameComponent implements OnInit {
   }
 
   checkAnswers() {
-    let vm = this;
     this.guessList.forEach(function (value: colorEnum, index: number, array: any[]) {
-      if (vm.answerList[index] !== value) {
-        vm.state = stateEnum.gameOver;
+      if (this.answerList[index] !== value) {
+        this.state = stateEnum.gameOver;
         alert('you lose');
       }
-    });
+    }.bind(this));
 
     if (this.state === stateEnum.gameOver) {
       return;
