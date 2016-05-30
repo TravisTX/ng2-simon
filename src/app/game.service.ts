@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GameService {
+  level: number = 1;
   state: stateEnum;
   answerList: colorEnum[] = [];
   guessList: colorEnum[] = [];
@@ -18,6 +19,7 @@ export class GameService {
   addAnswer() {
     let newAnswer = this.getRandomElementOfEnum<colorEnum>(colorEnum);
     this.answerList.push(newAnswer);
+    this.level = this.answerList.length;
     this.guessList = [];
   }
 

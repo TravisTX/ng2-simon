@@ -1,14 +1,22 @@
 <div>
-  answerList: {{answerList}}<br> 
-  state: {{gameService.state}}<br>
+  answerList: {{answerList}}<br> state: {{gameService.state}}<br>
   <div [hidden]="gameService.state!=stateEnum.reveal">reveal</div>
   <div [hidden]="gameService.state!=stateEnum.input">input</div>
   <div [hidden]="gameService.state!=stateEnum.gameOver">gameOver</div>
 
-  <div class="simon-buttons">
-    <div class="simon-button red" (click)="click(colorEnum.red)" [ngClass]="{selected: illuminatedColor==colorEnum.red}">red</div>
-    <div class="simon-button yellow" (click)="click(colorEnum.yellow)" [ngClass]="{selected: illuminatedColor==colorEnum.yellow}">yellow</div>
-    <div class="simon-button green" (click)="click(colorEnum.green)" [ngClass]="{selected: illuminatedColor==colorEnum.green}">green</div>
-    <div class="simon-button blue" (click)="click(colorEnum.blue)" [ngClass]="{selected: illuminatedColor==colorEnum.blue}">blue</div>
+  <div class="simon-board-wrapper">
+    <div class="simon-board">
+      <div class="pad green" (click)="click(colorEnum.green)" [ngClass]="{illuminated: illuminatedColor==colorEnum.green}"></div>
+      <div class="pad red" (click)="click(colorEnum.red)" [ngClass]="{illuminated: illuminatedColor==colorEnum.red}"></div>
+      <div class="pad yellow" (click)="click(colorEnum.yellow)" [ngClass]="{illuminated: illuminatedColor==colorEnum.yellow}"></div>
+      <div class="pad blue" (click)="click(colorEnum.blue)" [ngClass]="{illuminated: illuminatedColor==colorEnum.blue}"></div>
+      <div class="center">
+        <div class="display">
+          <span [hidden]="gameService.state!=stateEnum.reveal">watch</span>
+          <span [hidden]="gameService.state!=stateEnum.input">level {{gameService.level}}</span>
+          <span [hidden]="gameService.state!=stateEnum.gameOver">gameOver</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
