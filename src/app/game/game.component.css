@@ -82,6 +82,7 @@
 }
 .center .display {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -92,8 +93,18 @@
     height: calc(100% - 20px);
     background-color: white;
     border-radius: 50%;
-    font-size: 1vmin;
+    font-size: 9vmin;
+    text-align: center;
 }
 
+.display .level {
+    font-size: 7vmin;
+}
 
+.display .state {
+    font-size: 9vmin;
+}
 
+.pointer {
+    cursor: pointer;
+}

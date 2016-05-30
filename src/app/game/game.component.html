@@ -1,5 +1,5 @@
 <div>
-  answerList: {{answerList}}<br> state: {{gameService.state}}<br>
+  answerList: {{answerList}}<br> state: {{gameService.state!==stateEnum.preStart}}<br>
   <div [hidden]="gameService.state!=stateEnum.reveal">reveal</div>
   <div [hidden]="gameService.state!=stateEnum.input">input</div>
   <div [hidden]="gameService.state!=stateEnum.gameOver">gameOver</div>
@@ -11,11 +11,43 @@
       <div class="pad yellow" (click)="click(colorEnum.yellow)" [ngClass]="{illuminated: illuminatedColor==colorEnum.yellow}"></div>
       <div class="pad blue" (click)="click(colorEnum.blue)" [ngClass]="{illuminated: illuminatedColor==colorEnum.blue}"></div>
       <div class="center">
-        <div class="display">
-          <span [hidden]="gameService.state!=stateEnum.reveal">watch</span>
-          <span [hidden]="gameService.state!=stateEnum.input">level {{gameService.level}}</span>
-          <span [hidden]="gameService.state!=stateEnum.gameOver">gameOver</span>
+        <div [hidden]="gameService.state!==stateEnum.preStart">
+          <div class="display pointer" (click)="reset()">
+            <span>Start</span>
+          </div>
         </div>
+
+        <div [hidden]="gameService.state!==stateEnum.reveal">
+          <div class="display">
+            <div class="level">Level {{gameService.level}}</div>
+            <div class="state">
+              <span>Watch</span>
+            </div>
+          </div>
+        </div>
+
+        <div [hidden]="gameService.state!==stateEnum.input">
+          <div class="display">
+            <div class="level">Level {{gameService.level}}</div>
+            <div class="state">
+              <span>Go</span>
+            </div>
+          </div>
+        </div>
+
+        <div [hidden]="gameService.state!==stateEnum.gameOver">
+          <div class="display pointer" (click)="reset()">
+            <div class="level">Level {{gameService.level}}</div>
+            <div class="state">
+              <span>Game Over</span>
+            </div>
+            <div>
+              Click to Restart
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>

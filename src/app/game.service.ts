@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GameService {
   level: number = 1;
-  state: stateEnum;
+  state: stateEnum = stateEnum.preStart;
   answerList: colorEnum[] = [];
   guessList: colorEnum[] = [];
 
@@ -59,6 +59,7 @@ export class GameService {
 }
 
 export enum stateEnum {
+  preStart,
   reveal,
   input,
   gameOver
