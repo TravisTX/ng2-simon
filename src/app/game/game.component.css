@@ -108,3 +108,10 @@
 .pointer {
     cursor: pointer;
 }
+
+.display.game-over .state {
+    font-size: 3vmin;
+}
+.display.game-over .instructions {
+    font-size: 3vmin;
+}

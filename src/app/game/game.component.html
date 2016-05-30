@@ -1,9 +1,4 @@
 <div>
-  answerList: {{answerList}}<br> state: {{gameService.state!==stateEnum.preStart}}<br>
-  <div [hidden]="gameService.state!=stateEnum.reveal">reveal</div>
-  <div [hidden]="gameService.state!=stateEnum.input">input</div>
-  <div [hidden]="gameService.state!=stateEnum.gameOver">gameOver</div>
-
   <div class="simon-board-wrapper">
     <div class="simon-board">
       <div class="pad green" (click)="click(colorEnum.green)" [ngClass]="{illuminated: illuminatedColor==colorEnum.green}"></div>
@@ -36,14 +31,12 @@
         </div>
 
         <div [hidden]="gameService.state!==stateEnum.gameOver">
-          <div class="display pointer" (click)="reset()">
+          <div class="display pointer game-over" (click)="reset()">
             <div class="level">Level {{gameService.level}}</div>
             <div class="state">
               <span>Game Over</span>
             </div>
-            <div>
-              Click to Restart
-            </div>
+            <div class="instructions">Click to Restart</div>
           </div>
         </div>
 
