@@ -1,0 +1,18 @@
+.simon-button {
+    width: 200px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.simon-button.red {
+    background-color: #880000;
+}
+.simon-button.green {
+    background-color: #008800;
+}
+.simon-button.blue {
+    background-color: #000088;
+}
+.simon-button.yellow {
+    background-color: #888800;
+}
