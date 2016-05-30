@@ -1,13 +1,14 @@
 <div>
   answerList: {{answerList}}<br> 
-
-state: {{gameService.state}}<br>
+  state: {{gameService.state}}<br>
   <div [hidden]="gameService.state!=stateEnum.present">present</div>
   <div [hidden]="gameService.state!=stateEnum.input">input</div>
   <div [hidden]="gameService.state!=stateEnum.gameOver">gameOver</div>
 
-  <div class="simon-button red" (click)="click(colorEnum.red)">red</div>
-  <div class="simon-button yellow" (click)="click(colorEnum.yellow)">yellow</div>
-  <div class="simon-button green" (click)="click(colorEnum.green)">green</div>
-  <div class="simon-button blue" (click)="click(colorEnum.blue)">blue</div>
+  <div class="simon-buttons">
+    <div class="simon-button red" (click)="click(colorEnum.red)" [ngClass]="{selected: illuminatedColor==colorEnum.red}">red</div>
+    <div class="simon-button yellow" (click)="click(colorEnum.yellow)" [ngClass]="{selected: illuminatedColor==colorEnum.yellow}">yellow</div>
+    <div class="simon-button green" (click)="click(colorEnum.green)" [ngClass]="{selected: illuminatedColor==colorEnum.green}">green</div>
+    <div class="simon-button blue" (click)="click(colorEnum.blue)" [ngClass]="{selected: illuminatedColor==colorEnum.blue}">blue</div>
+  </div>
 </div>

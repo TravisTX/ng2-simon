@@ -12,7 +12,7 @@ export class GameService {
     this.answerList = [];
     this.guessList = [];
     this.addAnswer();
-    this.state = stateEnum.present;
+    this.state = stateEnum.reveal;
   }
 
   addAnswer() {
@@ -57,7 +57,7 @@ export class GameService {
 }
 
 export enum stateEnum {
-  present,
+  reveal,
   input,
   gameOver
 };

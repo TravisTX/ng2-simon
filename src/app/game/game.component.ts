@@ -12,25 +12,46 @@ export class GameComponent implements OnInit {
   stateEnum = stateEnum;
   colorEnum = colorEnum;
   answerList: colorEnum[] = [];
+  illuminatedColor: colorEnum;
+  unilluminateTimeoutId: any;
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
     this.gameService.reset();
-    this.presentAnswers();
+    this.revealAnswers();
   }
 
   click(color: colorEnum) {
+    this.illuminateColor(color);
     this.gameService.guess(color);
-    if (this.gameService.state !== stateEnum.gameOver) {
-      this.presentAnswers();
+    if (this.gameService.guessList.length === 0 && this.gameService.state !== stateEnum.gameOver) {
+      this.revealAnswers();
     }
   }
 
-  presentAnswers() {
-    this.gameService.state = stateEnum.present;
+  revealAnswers() {
+    this.gameService.state = stateEnum.reveal;
+
+    console.log('revealing answers');
+    this.revealNextAnswer(0);
+
     this.answerList = this.gameService.answerList;
     this.gameService.state = stateEnum.input;
+  }
+
+  revealNextAnswer(i: number) {
+    this.illuminateColor(this.gameService.answerList[i]);
+
+    if (this.gameService.answerList.length > i + 1) {
+      setTimeout(function () { this.revealNextAnswer(i + 1) }.bind(this), 2000);
+    }
+  }
+
+  illuminateColor(color: colorEnum) {
+    window.clearTimeout(this.unilluminateTimeoutId);
+    this.illuminatedColor = color;
+    this.unilluminateTimeoutId = setTimeout(function () { this.illuminatedColor = null }.bind(this), 1000);
   }
 
 }

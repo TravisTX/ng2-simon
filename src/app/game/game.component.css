@@ -1,18 +1,30 @@
+.simon-buttons {
+    background-color: black;
+}
+
 .simon-button {
     width: 200px;
     height: 100px;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .simon-button.red {
-    background-color: #880000;
+    background-color: hsl(0, 68%, 53%);
 }
 .simon-button.green {
-    background-color: #008800;
+    background-color: hsl(127, 68%, 53%);
 }
 .simon-button.blue {
-    background-color: #000088;
+    background-color: hsl(238, 68%, 53%);
 }
 .simon-button.yellow {
-    background-color: #888800;
+    background-color: hsl(61, 68%, 53%);
+}
+
+.simon-button:hover {
+    opacity: 0.7;
+}
+.simon-button.selected {
+    opacity: 1;
 }
