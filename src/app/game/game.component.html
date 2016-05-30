@@ -1,8 +1,12 @@
 <div>
   answerList: {{answerList}}<br> guessList: {{guessList}}<br>
 
-  <div class="simon-button red" (click)="click('red')">red</div>
-  <div class="simon-button yellow" (click)="click('yellow')">yellow</div>
-  <div class="simon-button green" (click)="click('green')">green</div>
-  <div class="simon-button blue" (click)="click('blue')">blue</div>
+  <div [hidden]="state!=stateEnum.present">present</div>
+  <div [hidden]="state!=stateEnum.input">input</div>
+  <div [hidden]="state!=stateEnum.gameOver">gameOver</div>
+
+  <div class="simon-button red" (click)="click(colorEnum.red)">red</div>
+  <div class="simon-button yellow" (click)="click(colorEnum.yellow)">yellow</div>
+  <div class="simon-button green" (click)="click(colorEnum.green)">green</div>
+  <div class="simon-button blue" (click)="click(colorEnum.blue)">blue</div>
 </div>
