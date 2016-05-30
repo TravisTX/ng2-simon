@@ -14,8 +14,8 @@ export class GameComponent implements OnInit {
   answerList: colorEnum[] = [];
   illuminatedColor: colorEnum;
   unilluminateTimeoutId: any;
-  illuminationTime = 1000;
-  illuminationPause = 1000;
+  illuminationTime = 500;
+  illuminationPause = 500;
 
   constructor(private gameService: GameService) { }
 
