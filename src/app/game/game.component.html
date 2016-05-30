@@ -1,9 +1,10 @@
 <div>
-  answerList: {{answerList}}<br> guessList: {{guessList}}<br>
+  answerList: {{answerList}}<br> 
 
-  <div [hidden]="state!=stateEnum.present">present</div>
-  <div [hidden]="state!=stateEnum.input">input</div>
-  <div [hidden]="state!=stateEnum.gameOver">gameOver</div>
+state: {{gameService.state}}<br>
+  <div [hidden]="gameService.state!=stateEnum.present">present</div>
+  <div [hidden]="gameService.state!=stateEnum.input">input</div>
+  <div [hidden]="gameService.state!=stateEnum.gameOver">gameOver</div>
 
   <div class="simon-button red" (click)="click(colorEnum.red)">red</div>
   <div class="simon-button yellow" (click)="click(colorEnum.yellow)">yellow</div>
