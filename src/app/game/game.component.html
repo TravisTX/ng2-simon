@@ -1,7 +1,7 @@
 <div>
   answerList: {{answerList}}<br> 
   state: {{gameService.state}}<br>
-  <div [hidden]="gameService.state!=stateEnum.present">present</div>
+  <div [hidden]="gameService.state!=stateEnum.reveal">reveal</div>
   <div [hidden]="gameService.state!=stateEnum.input">input</div>
   <div [hidden]="gameService.state!=stateEnum.gameOver">gameOver</div>
 

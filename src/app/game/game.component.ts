@@ -14,6 +14,8 @@ export class GameComponent implements OnInit {
   answerList: colorEnum[] = [];
   illuminatedColor: colorEnum;
   unilluminateTimeoutId: any;
+  illuminationTime = 1000;
+  illuminationPause = 1000;
 
   constructor(private gameService: GameService) { }
 
@@ -32,26 +34,26 @@ export class GameComponent implements OnInit {
 
   revealAnswers() {
     this.gameService.state = stateEnum.reveal;
-
-    console.log('revealing answers');
-    this.revealNextAnswer(0);
-
     this.answerList = this.gameService.answerList;
-    this.gameService.state = stateEnum.input;
+    // timeout to make sure the illumination is done from the player action
+    setTimeout(function () { this.revealNextAnswer(0) }.bind(this), this.illuminationTime + this.illuminationPause);
   }
 
   revealNextAnswer(i: number) {
     this.illuminateColor(this.gameService.answerList[i]);
 
     if (this.gameService.answerList.length > i + 1) {
-      setTimeout(function () { this.revealNextAnswer(i + 1) }.bind(this), 2000);
+      setTimeout(function () { this.revealNextAnswer(i + 1) }.bind(this), this.illuminationTime + this.illuminationPause);
+    }
+    else {
+      this.gameService.state = stateEnum.input;
     }
   }
 
   illuminateColor(color: colorEnum) {
     window.clearTimeout(this.unilluminateTimeoutId);
     this.illuminatedColor = color;
-    this.unilluminateTimeoutId = setTimeout(function () { this.illuminatedColor = null }.bind(this), 1000);
+    this.unilluminateTimeoutId = setTimeout(function () { this.illuminatedColor = null }.bind(this), this.illuminationTime);
   }
 
 }
